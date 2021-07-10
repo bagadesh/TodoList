@@ -32,6 +32,14 @@ fun ProjectHome() {
             "Birthday",
             "19 Jun 2020",
             19
+        ),   Project(
+            "Wedding",
+            "16 Jun 2020",
+            16
+        ), Project(
+            "Birthday",
+            "19 Jun 2020",
+            19
         )
     )
     Column(
@@ -44,7 +52,8 @@ fun ProjectHome() {
         LazyRow(
             modifier = Modifier
                 .padding(top = 20.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+            ,
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             items(result) {
@@ -61,9 +70,11 @@ fun ProjectIt(
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
+            .padding(start = 10.dp,end = 10.dp)
             .size(150.dp)
             .background(Color(0xFFF8FAFB))
             .padding(10.dp)
+
     ) {
         Image(
             painter = painterResource(id = R.drawable.ic_ring),

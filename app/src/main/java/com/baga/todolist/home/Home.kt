@@ -36,34 +36,58 @@ fun Home() {
     val dRows = viewModel.getDates().collectAsLazyPagingItems()
     val things = viewModel.getThingsList().toMutableStateList()
     val scope = rememberCoroutineScope()
-    val addTaskState = rememberBottomSheetScaffoldState()
-    AddTaskBottomSheet (addTaskState) {
-        Column(
-            modifier = Modifier
-                .padding(10.dp)
-                .fillMaxSize()
-        ) {
-            DateRow(dRows)
-            ProjectHome()
-            ThingsTodo(things) { todo ->
-                viewModel.onCheckBoxClick(todo)
-                things.find {
-                    it.todoId == todo.todoId
-                }?.let {
-                    it.isChecked = true
-                    things[things.indexOf(it)] = it
-                }
-            }
+    val addTaskState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden
+    )
+    ModalBottomSheetLayout(
+        sheetState = addTaskState,
+        sheetShape = RoundedCornerShape(5.dp),
+        sheetContentColor = Color.Black,
+        sheetBackgroundColor = Color.Transparent,
+        sheetContent = {
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .padding(10.dp),
             ) {
-                AddTaskButton("Add task", modifier = Modifier.align(Alignment.BottomCenter)) {
+                AddTask {
                     scope.launch {
-                        addTaskState.bottomSheetState.expand()
+                        addTaskState.hide()
                     }
                 }
+            }
+        }) {
 
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier.padding(10.dp)
+            ) {
+                DateRow(dRows)
+                ProjectHome()
+                ThingsTodo(things) { todo,checked ->
+                    viewModel.onCheckBoxClick(todo)
+                    things.find {
+                        it.todoId == todo.todoId
+                    }?.let {
+                        it.isChecked = checked
+                        things[things.indexOf(it)] = it
+                    }
+                }
+//                Box(
+//                    modifier = Modifier
+//                        .fillMaxSize()
+//                ) {
+//                    AddTaskButton("Add task", modifier = Modifier.align(Alignment.BottomCenter)) {
+//                        scope.launch {
+//                            addTaskState.show()
+//                        }
+//                    }
+//
+//                }
+            }
+            AddTaskButton("Add task", modifier = Modifier.align(Alignment.BottomCenter)) {
+                scope.launch {
+                    addTaskState.show()
+                }
             }
         }
     }

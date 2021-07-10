@@ -1,14 +1,17 @@
 package com.baga.todolist
 
 object Libs {
+    object Android {
+        private const val gradlePluginVersion = "7.1.0-alpha02"
+        const val AGP = "com.android.tools.build:gradle:$gradlePluginVersion"
+    }
     object Kotlin {
-        const val kotlin_compiler_version = "1.5.10"
+        private const val kotlin_compiler_version = "1.5.10"
         const val GradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_compiler_version"
     }
     object Compose {
-        const val compose_version = "1.0.0-beta09"
-        private const val compose_version_old = "1.0.0-beta09"
-        private const val activity_compose = "1.3.0-beta02"
+        const val compose_version = "1.0.0-rc01"
+        private const val activity_compose = "1.3.0-rc01"
         const val UI = "androidx.compose.ui:ui:$compose_version"
         const val Material = "androidx.compose.material:material:$compose_version"
         const val Tooling = "androidx.compose.ui:ui-tooling:$compose_version"
@@ -41,12 +44,12 @@ object Libs {
     }
 
     object AndroidX {
-        const val appCompactVersion = "1.3.0"
+        private const val appCompactVersion = "1.3.0"
         const val AppCompact = "androidx.appcompat:appcompat:$appCompactVersion"
     }
 
     object Material {
-        const val version = "1.3.0"
+        private const val version = "1.3.0"
         const val Material = "com.google.android.material:material:$version"
     }
 
@@ -62,5 +65,18 @@ object Libs {
         private const val version = "1.4.1"
         const val Android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
         const val Core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    }
+
+    object Accompanist {
+        private const val version = "0.12.0"
+        const val FlexBox = "com.google.accompanist:accompanist-flowlayout:$version"
+    }
+    object DataBase {
+        object SqlDelight {
+            private const val sql_delight_version = "1.5.0"
+            const val Plugin = "com.squareup.sqldelight:gradle-plugin:$sql_delight_version"
+            const val Runtime = "com.squareup.sqldelight:runtime:$sql_delight_version" //CommonSet
+            const val AndroidDriver = "com.squareup.sqldelight:android-driver:$sql_delight_version" // Android Specific Module
+        }
     }
 }

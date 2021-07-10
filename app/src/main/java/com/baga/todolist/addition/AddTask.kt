@@ -1,15 +1,11 @@
 package com.baga.todolist.addition
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,6 +17,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.baga.todolist.generic.CircleItem
+import com.baga.todolist.generic.DateDisplayView
+import com.baga.todolist.ui.theme.CardBackground
+import com.google.accompanist.flowlayout.FlowRow
 
 @Preview
 @Composable
@@ -39,18 +39,16 @@ fun AddTask(
     }
     Column(
         modifier = Modifier
-            .padding(20.dp)
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(10.dp))
             .fillMaxWidth()
-            .requiredHeight(100.dp)
+            .wrapContentHeight()
             .background(MaterialTheme.colors.background)
-            .padding(10.dp)
     ) {
         Text(
             text = "Create a new task",
             color = MaterialTheme.colors.onSecondary,
             fontSize = 20.sp,
-            modifier = Modifier.padding(top = 20.dp),
+            modifier = Modifier.padding(top = 20.dp, start = 20.dp),
             fontWeight = FontWeight.Bold
         )
         TextField(
@@ -58,10 +56,62 @@ fun AddTask(
             onValueChange = {
                 taskName = it
             },
-            modifier = Modifier.background(Color.Transparent),
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.Transparent)
+                .padding(20.dp),
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.Transparent
-            )
+            ),
         )
+        // Date Sections
+        val list = listOf("Tomorrow", "Today", "Another Date")
+        FlowRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
+        ) {
+            list.forEach {
+                DateDisplayView(title = it)
+            }
+        }
+        Text(
+            text = "Participants",
+            color = MaterialTheme.colors.onSecondary,
+            fontSize = 20.sp,
+            modifier = Modifier.padding(top = 20.dp, start = 20.dp),
+            fontWeight = FontWeight.Bold
+        )
+        val list2 = listOf("We", "Me")
+        FlowRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp)
+        ) {
+            list2.forEach {
+                CircleItem(title = it)
+            }
+            CircleItem(title = "Add",imageVector = Icons.Outlined.Add)
+        }
+        SaveTask()
+    }
+}
+
+@Preview
+@Composable
+fun SaveTask() {
+    Button(
+        onClick = {
+            //saveButton.invoke()
+        }, modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .background(CardBackground),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = CardBackground,
+            contentColor = CardBackground
+        )
+    ) {
+        Text(text = "Save task", color = MaterialTheme.colors.onSecondary)
     }
 }

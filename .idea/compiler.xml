@@ -5,6 +5,7 @@
       <module name="TodoList.app" target="11" />
       <module name="TodoList.buildSrc" target="11" />
       <module name="TodoList.data" target="11" />
+      <module name="TodoList.domain" target="1.8" />
       <module name="TodoList.presentation" target="11" />
     </bytecodeTargetLevel>
   </component>
