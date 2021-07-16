@@ -8,7 +8,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,7 +17,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.baga.todolist.ui.theme.CardBackground
+import com.baga.todolist.ui.theme.CardBackgroundLight
 
 @Composable
 fun DateDisplayView(
@@ -28,19 +27,20 @@ fun DateDisplayView(
         modifier = Modifier
             .padding(start = 10.dp, end = 8.dp, top = 8.dp, bottom = 8.dp)
             .clip(RoundedCornerShape(5.dp))
-            .background(CardBackground)
+            .background(MaterialTheme.colors.onSurface)
             .padding(top = 5.dp, bottom = 5.dp, start = 10.dp, end = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             imageVector = Icons.Outlined.DateRange,
             contentDescription = "Date Image",
-            tint = MaterialTheme.colors.primary
+            tint = MaterialTheme.colors.onPrimary
         )
         Text(
             text = title,
             fontSize = 14.sp,
-            modifier = Modifier.padding(start = 5.dp)
+            modifier = Modifier.padding(start = 5.dp),
+            color = MaterialTheme.colors.onPrimary
         )
     }
 }
@@ -55,7 +55,7 @@ fun CircleItem(
         modifier = Modifier
             .padding(10.dp)
             .clip(RoundedCornerShape(50))
-            .background(CardBackground)
+            .background(MaterialTheme.colors.onSurface)
             .padding(10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -63,7 +63,7 @@ fun CircleItem(
             Icon(
                 imageVector = imageVector,
                 contentDescription = "Date Image",
-                tint = MaterialTheme.colors.onSurface,
+                tint = MaterialTheme.colors.onPrimary,
                 modifier = Modifier.padding(start = 5.dp,end = 5.dp)
             )
         }
@@ -72,7 +72,7 @@ fun CircleItem(
             text = title,
             fontSize = 14.sp,
             modifier = Modifier.padding(end = endDp),
-            color = MaterialTheme.colors.primary
+            color = MaterialTheme.colors.onPrimary
         )
     }
 }

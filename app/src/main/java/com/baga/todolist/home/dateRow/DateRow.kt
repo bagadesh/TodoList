@@ -52,8 +52,8 @@ fun A(
             MaterialTheme.colors.primary
 
         } else {
-            textColor = MaterialTheme.colors.onSecondary
-            Color(0xFFF8FAFB)
+            textColor = MaterialTheme.colors.secondaryVariant
+            MaterialTheme.colors.onSurface
         }
 
     Column(

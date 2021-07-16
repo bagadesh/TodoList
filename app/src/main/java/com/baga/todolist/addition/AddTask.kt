@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.baga.todolist.generic.CircleItem
 import com.baga.todolist.generic.DateDisplayView
-import com.baga.todolist.ui.theme.CardBackground
+import com.baga.todolist.ui.theme.CardBackgroundLight
 import com.google.accompanist.flowlayout.FlowRow
 
 @Preview
@@ -46,7 +46,7 @@ fun AddTask(
     ) {
         Text(
             text = "Create a new task",
-            color = MaterialTheme.colors.onSecondary,
+            color = MaterialTheme.colors.onPrimary,
             fontSize = 20.sp,
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
             fontWeight = FontWeight.Bold
@@ -77,7 +77,7 @@ fun AddTask(
         }
         Text(
             text = "Participants",
-            color = MaterialTheme.colors.onSecondary,
+            color = MaterialTheme.colors.onPrimary,
             fontSize = 20.sp,
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
             fontWeight = FontWeight.Bold
@@ -105,13 +105,12 @@ fun SaveTask() {
             //saveButton.invoke()
         }, modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp)
-            .background(CardBackground),
+            .height(100.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = CardBackground,
-            contentColor = CardBackground
+            contentColor = MaterialTheme.colors.surface,
+            backgroundColor = MaterialTheme.colors.surface
         )
     ) {
-        Text(text = "Save task", color = MaterialTheme.colors.onSecondary)
+        Text(text = "Save task", color = MaterialTheme.colors.onPrimary)
     }
 }

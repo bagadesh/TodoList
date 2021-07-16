@@ -6,14 +6,24 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
 }
+
 android {
-    compileSdk = 30
+//    repositories {
+//        google()
+//        mavenCentral()
+//        maven {
+//            setUrl("https://maven.google.com/")
+//        }
+//    }
+//    compileSdk = 30
+    compileSdkVersion = "android-S"
     buildToolsVersion = "30.0.3"
 
     defaultConfig {
         applicationId = "com.baga.todolist"
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
+//        targetSdkPreview = "S"
         versionCode = 1
         versionName = "1.0"
 
@@ -26,7 +36,7 @@ android {
     buildTypes {
         debug {
             isMinifyEnabled = false
-            proguardFile(getDefaultProguardFile("proguard-android-optimize.txt"))
+          //  proguardFile(getDefaultProguardFile("proguard-android-optimize.txt"))
         }
     }
     compileOptions {
@@ -62,6 +72,9 @@ dependencies {
 
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.4.0")
+
+    implementation("androidx.core:core-google-shortcuts:1.0.0")
+    implementation("androidx.core:core-splashscreen:1.0.0-alpha01")
 
     implementation(Libs.Compose.UI)
     implementation(Libs.Compose.Material)

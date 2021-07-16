@@ -18,6 +18,10 @@ dependencies {
     kapt(Libs.Hilt.Compiler)
 //    implementation(Libs.DataBase.SqlDelight.Runtime)
 //    implementation(Libs.DataBase.SqlDelight.AndroidDriver)
+
+    implementation(Libs.Room.Runtime)
+    kapt(Libs.Room.Compiler)
+    implementation(Libs.Room.Ktx)
 }
 
 android {

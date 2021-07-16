@@ -72,7 +72,7 @@ fun ProjectIt(
             .clip(RoundedCornerShape(10.dp))
             .padding(start = 10.dp,end = 10.dp)
             .size(150.dp)
-            .background(Color(0xFFF8FAFB))
+            .background(MaterialTheme.colors.onSurface)
             .padding(10.dp)
 
     ) {

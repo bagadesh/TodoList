@@ -15,7 +15,6 @@ import com.baga.domain.entity.thingsTodo.Todo
 
 @Composable
 fun AddTaskButton(
-    title: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -28,18 +27,18 @@ fun AddTaskButton(
             .fillMaxWidth()
             .height(100.dp),
         colors = ButtonDefaults.buttonColors(
-            contentColor = Color(0xFFF8FAFB),
-            backgroundColor = Color(0xFFF8FAFB)
+            contentColor = MaterialTheme.colors.surface,
+            backgroundColor = MaterialTheme.colors.surface
         )
     ) {
         Icon(
             imageVector = Icons.Filled.Add,
             contentDescription = "",
-            tint = Color.Black
+            tint = MaterialTheme.colors.onPrimary
         )
         Text(
-            text = title,
-            color = MaterialTheme.colors.onSecondary
+            text = "Add task",
+            color = MaterialTheme.colors.onPrimary
         )
     }
 }

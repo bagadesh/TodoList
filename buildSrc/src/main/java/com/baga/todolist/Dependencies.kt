@@ -1,5 +1,7 @@
 package com.baga.todolist
 
+import java.awt.SplashScreen
+
 object Libs {
     object Android {
         private const val gradlePluginVersion = "7.1.0-alpha02"
@@ -17,6 +19,13 @@ object Libs {
         const val Tooling = "androidx.compose.ui:ui-tooling:$compose_version"
         const val Activity = "androidx.activity:activity-compose:$activity_compose"
         const val UnitTest = "androidx.compose.ui:ui-test-junit4:$compose_version"
+    }
+
+    object Room {
+        private const val room_version = "2.3.0"
+        const val Runtime = "androidx.room:room-runtime:$room_version"
+        const val Compiler = "androidx.room:room-compiler:$room_version"
+        const val Ktx = "androidx.room:room-ktx:$room_version"
     }
 
     object Paging {
@@ -40,7 +49,9 @@ object Libs {
 
     object Core {
         private const val ktx_version = "1.5.0"
+        private const val splash_screen_version = "1.0.0-alpha01"
         const val AndroidKtx = "androidx.core:core-ktx:$ktx_version"
+        const val SplashScreen = "androidx.core:core-slashscreen:$splash_screen_version"
     }
 
     object AndroidX {

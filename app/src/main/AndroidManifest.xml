@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".App"
-        android:theme="@style/Theme.TodoList">
+        android:theme="@style/Theme.MySplash">
         <activity
             android:name=".MainActivity"
             android:exported="true"

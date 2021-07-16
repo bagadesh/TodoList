@@ -14,9 +14,19 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.MySplash" parent="Theme.SplashScreen">
+        <item name="postSplashScreenTheme">@style/Theme.TodoList</item>
+        <item name="windowSplashScreenBackground">@color/purple_500</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+    </style>
+
     <style name="Theme.TodoList.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_icon_n</item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
+
     </style>
 
     <style name="Theme.TodoList.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

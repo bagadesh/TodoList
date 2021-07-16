@@ -34,7 +34,7 @@ fun TitleWithCount(
                 .padding(start = 10.dp)
                 .clip(RoundedCornerShape(50))
                 .size(30.dp)
-                .background(Color(0xFFF8FAFB)),
+                .background(MaterialTheme.colors.onSurface),
             contentAlignment = Alignment.Center
         ) {
             Text(

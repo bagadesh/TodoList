@@ -3,6 +3,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven {
+            setUrl("https://maven.google.com/")
+        }
     }
     dependencies {
         classpath(com.baga.todolist.Libs.Android.AGP)
