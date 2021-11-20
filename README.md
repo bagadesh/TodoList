@@ -4,7 +4,7 @@ Inspired from https://dribbble.com/shots/5964704/attachments/5964704-Daily-UI-42
 ![Alt text](https://github.com/bagadesh/TodoList/blob/master/images/image1.png)
 
 
-### Development 
+# Development 
 
   - This is a mockup.
   - Currently functionally is not implemented.
