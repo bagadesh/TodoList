@@ -44,6 +44,7 @@ dependencies {
     implementation Libs.Core.AndroidKtx
     implementation Libs.AndroidX.AppCompact
     implementation Libs.Material.Material
+    implementation(Libs.Compose.UI)
 
     implementation Libs.Paging.Common
 
