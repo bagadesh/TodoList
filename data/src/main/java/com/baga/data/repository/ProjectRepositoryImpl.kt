@@ -1,10 +1,15 @@
 package com.baga.data.repository
 
 import com.baga.data.db.AppDatabase
+import com.baga.data.db.entity.ProjectData
 import com.baga.data.mapper.toProjectData
+import com.baga.data.mapper.toProjectDomain
 import com.baga.domain.repository.ProjectRepository
 import com.baga.domain.result.Data
+import com.baga.domain.result.project.GetAllProjectResult
+import com.baga.domain.result.project.ProjectAddResult
 import com.baga.domain.usecase.project.AddProjectUseCaseRequest
+import com.baga.domain.usecase.project.GetAllProjectUseCaseRequest
 import javax.inject.Inject
 
 /**
@@ -12,11 +17,23 @@ import javax.inject.Inject
  */
 class ProjectRepositoryImpl @Inject constructor(
     private val appDatabase: AppDatabase
-): ProjectRepository {
+) : ProjectRepository {
 
-    override suspend fun addProject(request: AddProjectUseCaseRequest): Data<Unit> {
-        val projectData = request.project.toProjectData()
+    override suspend fun addProject(request: AddProjectUseCaseRequest): Data<ProjectAddResult> {
+        val projectData = ProjectData(
+            title = request.title,
+            projectType = request.projectType,
+            dueDate = request.dueDate
+        )
         appDatabase.projectDao().insertAll(projectData)
-        return Data.Success(Unit)
+        return Data.Success(ProjectAddResult(Unit)) //TODO
+    }
+
+    override suspend fun getAllProjects(request: GetAllProjectUseCaseRequest): Data<GetAllProjectResult> {
+        return Data.Success(
+            GetAllProjectResult(
+                result = appDatabase.projectDao().getAll().map { it.toProjectDomain() }
+            )
+        )
     }
 }

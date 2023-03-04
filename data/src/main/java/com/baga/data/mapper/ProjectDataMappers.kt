@@ -15,3 +15,12 @@ fun ProjectDomain.toProjectData(): ProjectData {
         dueDate = dueDate,
     )
 }
+
+fun ProjectData.toProjectDomain(): ProjectDomain {
+    return ProjectDomain(
+        id = id,
+        title = title,
+        projectType = projectType,
+        dueDate = dueDate
+    )
+}

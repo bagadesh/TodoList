@@ -15,12 +15,12 @@ android {
 //            setUrl("https://maven.google.com/")
 //        }
 //    }
-    compileSdk = 33
+    compileSdk = Libs.Versions.compileSDKVersion
     namespace = "com.baga.todolist"
 
     defaultConfig {
         applicationId = "com.baga.todolist"
-        minSdk = 21
+        minSdk = Libs.Versions.minSdk
         targetSdk = 31
 //        targetSdkPreview = "S"
         versionCode = 1
@@ -67,7 +67,9 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
-    implementation(project(":presentation"))
+    implementation(project(":features:baseUi"))
+    implementation(project(":features:presentation"))
+    implementation(project(":features:projects"))
 
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.4.0")
@@ -88,6 +90,7 @@ dependencies {
     implementation(Libs.LifeCycle.Runtime)
     implementation(Libs.LifeCycle.Compose)
 
+    implementation(Libs.Hilt.Compose)
     implementation(Libs.Hilt.Android)
     kapt(Libs.Hilt.Compiler)
 

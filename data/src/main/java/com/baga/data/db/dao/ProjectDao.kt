@@ -13,7 +13,7 @@ import com.baga.data.db.entity.ProjectData
 interface ProjectDao {
 
     @Query("SELECT * from projectdata")
-    fun getAll(): List<ProjectData>
+    suspend fun getAll(): List<ProjectData>
 
     @Insert
     suspend fun insertAll(vararg projectData: ProjectData)

@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
  */
 @Entity
 data class ProjectData(
-    @PrimaryKey val id: Int,
+    @PrimaryKey (autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "project_type") val projectType: String,
     @ColumnInfo(name = "due_date") val dueDate: String,

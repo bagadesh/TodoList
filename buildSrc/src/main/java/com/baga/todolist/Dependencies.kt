@@ -8,6 +8,7 @@ object Libs {
         val JavaVersion = org.gradle.api.JavaVersion.VERSION_17
         val jvmTarget = "17"
         val compileSDKVersion = 33
+        val minSdk = 24
     }
 
     object Android {
@@ -74,10 +75,12 @@ object Libs {
 
     object Hilt {
         private const val hilt_version = "2.45"
+        private const val hiltComposeVerion = "1.0.0"
         const val Android = "com.google.dagger:hilt-android:$hilt_version"
         const val Compiler = "com.google.dagger:hilt-android-compiler:$hilt_version"
         const val Core = "com.google.dagger:hilt-core:$hilt_version"
         const val Plugin = "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        const val Compose = "androidx.hilt:hilt-navigation-compose:$hiltComposeVerion"
     }
 
     object Coroutines {
