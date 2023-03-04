@@ -9,3 +9,8 @@ java {
     sourceCompatibility = Libs.Versions.JavaVersion
     targetCompatibility = Libs.Versions.JavaVersion
 }
+
+dependencies {
+    implementation(Libs.Coroutines.Core)
+    implementation(Libs.Hilt.Core)
+}

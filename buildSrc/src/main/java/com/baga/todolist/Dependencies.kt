@@ -76,6 +76,7 @@ object Libs {
         private const val hilt_version = "2.45"
         const val Android = "com.google.dagger:hilt-android:$hilt_version"
         const val Compiler = "com.google.dagger:hilt-android-compiler:$hilt_version"
+        const val Core = "com.google.dagger:hilt-core:$hilt_version"
         const val Plugin = "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
     }
 
