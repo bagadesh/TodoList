@@ -19,7 +19,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.baga.presentation.HomeViewModel
 import com.baga.todolist.addition.AddTask
 import com.baga.todolist.home.dateRow.DateRowUI
-import com.baga.todolist.home.projects.ProjectHome
+import com.baga.todolist.home.projects.ProjectHomeUI
 import com.baga.todolist.home.thingsToDo.ThingsTodo
 import com.baga.todolist.home.ui.AddTaskButton
 import com.baga.todolist.home.ui.MaterialColorUI
@@ -38,7 +38,7 @@ fun HomeView(addTaskState: ModalBottomSheetState, scope: CoroutineScope) {
         ) {
             MaterialColorUI()
             DateRowUI(dRows)
-            ProjectHome()
+            ProjectHomeUI(emptyList())
             ThingsTodo(things) { todo, checked ->
                 viewModel.onCheckBoxClick(todo)
                 things.find {
