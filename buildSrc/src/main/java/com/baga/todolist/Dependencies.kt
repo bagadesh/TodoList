@@ -3,16 +3,24 @@ package com.baga.todolist
 import java.awt.SplashScreen
 
 object Libs {
+
+    object Versions {
+        val JavaVersion = org.gradle.api.JavaVersion.VERSION_17
+        val jvmTarget = "17"
+        val compileSDKVersion = 33
+    }
+
     object Android {
-        private const val gradlePluginVersion = "7.1.0-alpha02"
+        private const val gradlePluginVersion = "8.1.0-alpha07"
         const val AGP = "com.android.tools.build:gradle:$gradlePluginVersion"
     }
     object Kotlin {
-        private const val kotlin_compiler_version = "1.5.10"
+        private const val kotlin_compiler_version = "1.8.10"
         const val GradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_compiler_version"
     }
     object Compose {
-        const val compose_version = "1.0.0-rc01"
+        const val composeCompilerVersion = "1.4.2"
+        const val compose_version = "1.4.0-beta02"
         private const val activity_compose = "1.3.0-rc01"
         const val UI = "androidx.compose.ui:ui:$compose_version"
         const val Material = "androidx.compose.material:material:$compose_version"
@@ -65,7 +73,7 @@ object Libs {
     }
 
     object Hilt {
-        private const val hilt_version = "2.37"
+        private const val hilt_version = "2.45"
         const val Android = "com.google.dagger:hilt-android:$hilt_version"
         const val Compiler = "com.google.dagger:hilt-android-compiler:$hilt_version"
         const val Plugin = "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"

@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.7">
-      <module name="TodoList.app" target="11" />
-      <module name="TodoList.buildSrc" target="11" />
-      <module name="TodoList.data" target="11" />
-      <module name="TodoList.domain" target="1.8" />
-      <module name="TodoList.presentation" target="11" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17" />
   </component>
 </project>
