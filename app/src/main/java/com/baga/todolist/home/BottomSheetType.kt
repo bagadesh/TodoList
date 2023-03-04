@@ -1,4 +1,4 @@
-package com.baga.todolist.home.home
+package com.baga.todolist.home
 
 /**
  * Created by bagadesh on 04/03/23.
