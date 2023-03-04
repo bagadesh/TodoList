@@ -8,6 +8,6 @@ import com.baga.domain.usecase.project.AddProjectUseCaseRequest
  */
 interface ProjectRepository {
 
-    fun addProject(request: AddProjectUseCaseRequest): Data<Unit>
+    suspend fun addProject(request: AddProjectUseCaseRequest): Data<Unit>
 
 }

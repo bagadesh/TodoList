@@ -30,7 +30,7 @@ object Libs {
     }
 
     object Room {
-        private const val room_version = "2.3.0"
+        private const val room_version = "2.5.0"
         const val Runtime = "androidx.room:room-runtime:$room_version"
         const val Compiler = "androidx.room:room-compiler:$room_version"
         const val Ktx = "androidx.room:room-ktx:$room_version"

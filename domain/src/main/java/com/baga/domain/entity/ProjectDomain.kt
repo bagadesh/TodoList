@@ -7,5 +7,5 @@ data class ProjectDomain(
     val id: Int,
     val title: String,
     val projectType: String,
-    val dueDate: Long
+    val dueDate: String
 )
