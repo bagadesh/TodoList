@@ -17,3 +17,9 @@ val CardBackgroundDark = Color(0x11F8FAFB)
 
 val selectedTopBarColorLight = Color(0xFF1410d1)
 val selectedTopBarColorDark = Color(0xFF1410d1)
+
+/**
+ * Project Colors
+ */
+
+val projectBackgroundColor = Color(0xFFf6fafb)

@@ -27,7 +27,7 @@ fun DateDisplayView(
         modifier = Modifier
             .padding(start = 10.dp, end = 8.dp, top = 8.dp, bottom = 8.dp)
             .clip(RoundedCornerShape(5.dp))
-            .background(MaterialTheme.colors.onSurface)
+            .background(MaterialTheme.colors.surface)
             .padding(top = 5.dp, bottom = 5.dp, start = 10.dp, end = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -55,7 +55,7 @@ fun CircleItem(
         modifier = Modifier
             .padding(10.dp)
             .clip(RoundedCornerShape(50))
-            .background(MaterialTheme.colors.onSurface)
+            .background(MaterialTheme.colors.surface)
             .padding(10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
