@@ -1,4 +1,4 @@
-package com.baga.todolist.home.projects
+package com.bagadesh.projects
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,13 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.baga.domain.Project
-import com.baga.todolist.home.common.TitleWithCount
-import com.baga.todolist.ui.theme.TodoListTheme
+import com.baga.domain.entity.ProjectDomain
 
 
 @Composable
 fun ProjectHomeUI(
-    projectList: List<Project>
+    projectList: List<ProjectDomain>,
+    addProjectClick: () -> Unit
 ) {
     val sizeOfProjectList = remember { projectList.size }
     Column(
@@ -30,9 +30,7 @@ fun ProjectHomeUI(
         ProjectHeadingUI(
             modifier = Modifier,
             count = sizeOfProjectList,
-            addClick = {
-
-            }
+            addClick = addProjectClick
         )
         if (sizeOfProjectList == 0) {
             EmptyProjectHomeUI(
@@ -47,7 +45,13 @@ fun ProjectHomeUI(
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 items(projectList) {
-                    ProjectItemUI(it)
+                    ProjectItemUI(
+                        title = it.title,
+                        projectType = it.projectType,
+                        dueDate = it.dueDate,
+                        iconResource = R.drawable.ic_ring, //TODO
+                        upcomingCount = 19 //TODO
+                    )
                 }
             }
         }
@@ -79,13 +83,24 @@ fun ProjectHomeUIPreview() {
             )
         )
     }
-    TodoListTheme {
-        ProjectHomeUI(result)
+    ProjectHomeUI(
+        result.map {
+            ProjectDomain(
+                id = 1,
+                title = "Sample title",
+                dueDate = "1237198238923",
+                projectType = it.title
+            )
+        }
+    ) {
+
     }
 }
 
 @Preview
 @Composable
 fun EmptyProjectHomeUIPreview() {
-    ProjectHomeUI(emptyList())
+    ProjectHomeUI(emptyList()) {
+
+    }
 }

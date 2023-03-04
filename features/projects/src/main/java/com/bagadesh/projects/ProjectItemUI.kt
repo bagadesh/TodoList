@@ -1,4 +1,4 @@
-package com.baga.todolist.home.projects
+package com.bagadesh.projects
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
@@ -13,9 +13,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.baga.domain.Project
-import com.baga.todolist.R
-import com.baga.todolist.ui.theme.TodoListTheme
 
 /**
  * Created by bagadesh on 04/03/23.
@@ -23,11 +20,15 @@ import com.baga.todolist.ui.theme.TodoListTheme
 
 @Composable
 fun ProjectItemUI(
-    project: Project
+    title: String,
+    projectType: String,
+    dueDate: String,
+    upcomingCount: Int,
+    iconResource: Int
 ) {
     ProjectSurfaceUI {
         Image(
-            painter = painterResource(id = R.drawable.ic_ring),
+            painter = painterResource(id = iconResource),
             contentDescription = "",
             modifier = Modifier
                 .padding(10.dp)
@@ -35,19 +36,19 @@ fun ProjectItemUI(
             colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
         )
         Text(
-            text = project.title,
+            text = projectType,
             fontSize = 16.sp,
             color = MaterialTheme.colors.primary,
             fontWeight = FontWeight.SemiBold
         )
         Text(
-            text = "Due on ${project.dueDateString}",
+            text = "Due on ${dueDate}",
             fontSize = 10.sp,
             fontWeight = FontWeight.Normal
         )
 
         Text(
-            text = "${project.count} Upcoming",
+            text = "$upcomingCount Upcoming",
             fontSize = 14.sp,
             fontWeight = FontWeight.Normal,
             modifier = Modifier.padding(top = 20.dp)
@@ -58,12 +59,11 @@ fun ProjectItemUI(
 @Preview
 @Composable
 fun ProjectItemUIPreview() {
-    val project =  Project(
-        "Birthday",
-        "19 Jun 2020",
-        19
+    ProjectItemUI(
+        title = "Test Title",
+        projectType = "Birthday",
+        dueDate = "2130712837891",
+        upcomingCount = 19,
+        iconResource = R.drawable.ic_ring
     )
-    TodoListTheme {
-        ProjectItemUI(project = project)
-    }
 }

@@ -1,4 +1,4 @@
-package com.baga.todolist.home.projects
+package com.bagadesh.projects
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
