@@ -70,6 +70,7 @@ dependencies {
     implementation(project(":features:baseUi"))
     implementation(project(":features:presentation"))
     implementation(project(":features:projects"))
+    implementation(project(":features:tasks"))
 
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.4.0")
@@ -79,7 +80,6 @@ dependencies {
 
     implementation(Libs.Compose.UI)
     implementation(Libs.Compose.Material)
-    implementation(Libs.Compose.Tooling)
     implementation(Libs.Compose.Tooling)
     implementation(Libs.Compose.Activity)
 

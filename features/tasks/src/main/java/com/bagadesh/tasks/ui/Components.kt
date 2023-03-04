@@ -1,4 +1,4 @@
-package com.baga.todolist.generic
+package com.bagadesh.tasks.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
@@ -14,10 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.baga.todolist.ui.theme.CardBackgroundLight
 
 @Composable
 fun DateDisplayView(
@@ -44,7 +42,7 @@ fun DateDisplayView(
         )
     }
 }
-@Preview
+
 @Composable
 fun CircleItem(
     title: String,

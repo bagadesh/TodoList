@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.bagadesh.projects"
+    namespace = "com.bagadesh.tasks"
     compileSdk = Libs.Versions.compileSDKVersion
 
     defaultConfig {

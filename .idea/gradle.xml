@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/features/baseUi" />
             <option value="$PROJECT_DIR$/features/presentation" />
             <option value="$PROJECT_DIR$/features/projects" />
+            <option value="$PROJECT_DIR$/features/tasks" />
             <option value="$PROJECT_DIR$/multi-data" />
           </set>
         </option>

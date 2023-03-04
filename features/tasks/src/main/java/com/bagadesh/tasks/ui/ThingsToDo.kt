@@ -1,4 +1,4 @@
-package com.baga.todolist.home.thingsToDo
+package com.bagadesh.tasks.ui
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -15,8 +15,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.baga.domain.entity.thingsTodo.Todo
-import com.baga.todolist.generic.DateDisplayView
-import com.baga.todolist.home.common.TitleWithCount
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -28,7 +26,7 @@ fun ThingsTodo(
         modifier = Modifier.padding(start = 10.dp, top = 30.dp)
     ) {
         stickyHeader {
-            TitleWithCount(
+            ThingsTodoHeading(
                 title = "Things to do",
                 count = data.size,
                 modifier = Modifier

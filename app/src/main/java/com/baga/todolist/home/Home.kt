@@ -20,14 +20,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.baga.presentation.HomeViewModel
-import com.baga.todolist.addition.AddTask
 import com.baga.todolist.home.dateRow.DateRowUI
-import com.baga.todolist.home.thingsToDo.ThingsTodo
 import com.baga.todolist.home.ui.AddTaskButton
 import com.baga.todolist.home.ui.MaterialColorUI
 import com.bagadesh.baseui.uiState.UIStatePark
 import com.bagadesh.projects.ui.ProjectHomeUI
 import com.bagadesh.projects.viewModel.ProjectViewModel
+import com.bagadesh.tasks.AddTask
+import com.bagadesh.tasks.ui.ThingsTodo
 import kotlinx.coroutines.launch
 
 @ExperimentalMaterialApi
