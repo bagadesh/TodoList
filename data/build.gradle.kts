@@ -7,6 +7,10 @@ plugins {
     id("kotlin-kapt")
 }
 
+android {
+    namespace = "com.baga.data"
+}
+
 dependencies {
     implementation(project(":domain"))
     implementation("androidx.core:core-ktx:1.6.0")
@@ -25,13 +29,10 @@ dependencies {
 }
 
 android {
-    compileSdk = 30
-    buildToolsVersion = "30.0.3"
+    compileSdk = Libs.Versions.compileSDKVersion
     defaultConfig {
         minSdk = 21
-        targetSdk = 30
         version = 1
-
         consumerProguardFile("consumer-rules.pro")
     }
     buildTypes {
@@ -40,11 +41,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Libs.Versions.JavaVersion
+        targetCompatibility = Libs.Versions.JavaVersion
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Libs.Versions.jvmTarget
     }
 }
 

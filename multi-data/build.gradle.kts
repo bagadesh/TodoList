@@ -1,9 +1,11 @@
+import com.baga.todolist.Libs
+
 plugins {
     id("java-library")
     id("kotlin")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = Libs.Versions.JavaVersion
+    targetCompatibility = Libs.Versions.JavaVersion
 }

@@ -16,7 +16,7 @@ android {
 //        }
 //    }
     compileSdk = 33
-    buildToolsVersion = "30.0.3"
+    namespace = "com.baga.todolist"
 
     defaultConfig {
         applicationId = "com.baga.todolist"
@@ -39,17 +39,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Libs.Versions.JavaVersion
+        targetCompatibility = Libs.Versions.JavaVersion
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Libs.Versions.jvmTarget
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Libs.Compose.compose_version
+        kotlinCompilerExtensionVersion = Libs.Compose.composeCompilerVersion
     }
     packagingOptions {
         resources.excludes.addAll(
