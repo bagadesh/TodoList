@@ -26,7 +26,7 @@ import com.baga.todolist.home.thingsToDo.ThingsTodo
 import com.baga.todolist.home.ui.AddTaskButton
 import com.baga.todolist.home.ui.MaterialColorUI
 import com.bagadesh.baseui.uiState.UIStatePark
-import com.bagadesh.projects.ProjectHomeUI
+import com.bagadesh.projects.ui.ProjectHomeUI
 import com.bagadesh.projects.viewModel.ProjectViewModel
 import kotlinx.coroutines.launch
 

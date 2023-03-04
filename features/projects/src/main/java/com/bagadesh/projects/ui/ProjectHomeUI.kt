@@ -1,4 +1,4 @@
-package com.bagadesh.projects
+package com.bagadesh.projects.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.baga.domain.Project
 import com.baga.domain.entity.ProjectDomain
+import com.bagadesh.projects.R
 
 
 @Composable

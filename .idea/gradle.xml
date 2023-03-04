@@ -15,8 +15,11 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/baseUi" />
+            <option value="$PROJECT_DIR$/features/presentation" />
+            <option value="$PROJECT_DIR$/features/projects" />
             <option value="$PROJECT_DIR$/multi-data" />
-            <option value="$PROJECT_DIR$/presentation" />
           </set>
         </option>
       </GradleProjectSettings>

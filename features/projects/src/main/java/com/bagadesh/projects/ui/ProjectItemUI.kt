@@ -1,4 +1,4 @@
-package com.bagadesh.projects
+package com.bagadesh.projects.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bagadesh.projects.R
 
 /**
  * Created by bagadesh on 04/03/23.
