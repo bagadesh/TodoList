@@ -4,11 +4,11 @@ import java.awt.SplashScreen
 
 object Libs {
     object Android {
-        private const val gradlePluginVersion = "7.1.0-alpha02"
+        private const val gradlePluginVersion = "7.4.2"
         const val AGP = "com.android.tools.build:gradle:$gradlePluginVersion"
     }
     object Kotlin {
-        private const val kotlin_compiler_version = "1.5.10"
+        private const val kotlin_compiler_version = "1.7.22"
         const val GradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_compiler_version"
     }
     object Compose {
@@ -65,7 +65,7 @@ object Libs {
     }
 
     object Hilt {
-        private const val hilt_version = "2.37"
+        private const val hilt_version = "2.45"
         const val Android = "com.google.dagger:hilt-android:$hilt_version"
         const val Compiler = "com.google.dagger:hilt-android-compiler:$hilt_version"
         const val Plugin = "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"

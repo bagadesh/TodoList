@@ -15,8 +15,7 @@ android {
 //            setUrl("https://maven.google.com/")
 //        }
 //    }
-//    compileSdk = 30
-    compileSdkVersion = "android-S"
+    compileSdk = 33
     buildToolsVersion = "30.0.3"
 
     defaultConfig {
