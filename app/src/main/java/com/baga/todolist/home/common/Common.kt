@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.baga.todolist.ui.theme.projectBackgroundColor
 
 @Composable
 fun TitleWithCount(
@@ -26,7 +27,7 @@ fun TitleWithCount(
     ) {
         Text(
             text = title,
-            fontSize = 24.sp, fontWeight = FontWeight.Black,
+            fontSize = 24.sp, fontWeight = FontWeight.Normal,
             modifier = Modifier.align(Alignment.CenterVertically)
         )
         Box(
@@ -34,14 +35,14 @@ fun TitleWithCount(
                 .padding(start = 10.dp)
                 .clip(RoundedCornerShape(50))
                 .size(30.dp)
-                .background(MaterialTheme.colors.onSurface),
+                .background(color = MaterialTheme.colors.surface),
             contentAlignment = Alignment.Center
         ) {
             Text(
                 text = "$count",
                 color = MaterialTheme.colors.primary,
-                fontWeight = FontWeight.Black,
-                modifier = Modifier.padding(5.dp)
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(0.dp)
             )
         }
     }

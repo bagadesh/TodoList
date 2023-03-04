@@ -19,7 +19,7 @@ import androidx.paging.compose.itemsIndexed
 import com.baga.domain.OurDate
 
 @Composable
-fun DateRow(
+fun DateRowUI(
     dateResult: LazyPagingItems<OurDate>
 ) {
     var selectedIndex: Int by remember {
@@ -30,7 +30,7 @@ fun DateRow(
     ) {
         itemsIndexed(dateResult) { index, value ->
             value?.also {
-                A(index, value,selectedIndex) { i, ourDate ->
+                DateRowItemUI(index, value, selectedIndex) { i, ourDate ->
                     selectedIndex = i
                 }
             }
@@ -39,22 +39,23 @@ fun DateRow(
 }
 
 @Composable
-fun A(
+fun DateRowItemUI(
     index: Int,
     date: OurDate,
     selectedIndex: Int,
     onClick: (Int, OurDate) -> Unit
 ) {
     val textColor: Color
-    val backgroundColor =
-        if (selectedIndex == index) {
-            textColor = MaterialTheme.colors.onPrimary
-            MaterialTheme.colors.primary
+    val backgroundColor: Color
 
-        } else {
-            textColor = MaterialTheme.colors.secondaryVariant
-            MaterialTheme.colors.onSurface
-        }
+    if (selectedIndex == index) {
+        textColor = MaterialTheme.colors.background
+        backgroundColor = MaterialTheme.colors.primary
+
+    } else {
+        textColor = MaterialTheme.colors.onSurface
+        backgroundColor = MaterialTheme.colors.surface
+    }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -65,7 +66,7 @@ fun A(
             .size(60.dp, 80.dp)
             .background(backgroundColor)
             .clickable {
-                onClick(index,date)
+                onClick(index, date)
             }
     ) {
         Text(
