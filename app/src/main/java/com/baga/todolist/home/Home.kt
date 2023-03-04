@@ -22,6 +22,7 @@ import com.baga.todolist.home.dateRow.DateRow
 import com.baga.todolist.home.projects.ProjectHome
 import com.baga.todolist.home.thingsToDo.ThingsTodo
 import com.baga.todolist.home.ui.AddTaskButton
+import com.baga.todolist.home.ui.MaterialColorUI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -35,6 +36,7 @@ fun HomeView(addTaskState: ModalBottomSheetState, scope: CoroutineScope) {
         Column(
             modifier = Modifier.padding(10.dp)
         ) {
+            MaterialColorUI()
             DateRow(dRows)
             ProjectHome()
             ThingsTodo(things) { todo, checked ->

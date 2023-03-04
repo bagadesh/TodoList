@@ -10,3 +10,10 @@ val Teal200 = Color(0xFF03DAC5)
 
 val CardBackgroundLight = Color(0xFFF8FAFB)
 val CardBackgroundDark = Color(0x11F8FAFB)
+
+/**
+ * Top Bar Colors
+ */
+
+val selectedTopBarColorLight = Color(0xFF1410d1)
+val selectedTopBarColorDark = Color(0xFF1410d1)

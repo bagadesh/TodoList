@@ -30,7 +30,7 @@ fun DateRow(
     ) {
         itemsIndexed(dateResult) { index, value ->
             value?.also {
-                A(index, value,selectedIndex) { i, ourDate ->
+                A(index, value, selectedIndex) { i, ourDate ->
                     selectedIndex = i
                 }
             }
@@ -46,15 +46,16 @@ fun A(
     onClick: (Int, OurDate) -> Unit
 ) {
     val textColor: Color
-    val backgroundColor =
-        if (selectedIndex == index) {
-            textColor = MaterialTheme.colors.onPrimary
-            MaterialTheme.colors.primary
+    val backgroundColor: Color
 
-        } else {
-            textColor = MaterialTheme.colors.secondaryVariant
-            MaterialTheme.colors.onSurface
-        }
+    if (selectedIndex == index) {
+        textColor = MaterialTheme.colors.background
+        backgroundColor = MaterialTheme.colors.primary
+
+    } else {
+        textColor = MaterialTheme.colors.onSurface
+        backgroundColor = MaterialTheme.colors.surface
+    }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -65,7 +66,7 @@ fun A(
             .size(60.dp, 80.dp)
             .background(backgroundColor)
             .clickable {
-                onClick(index,date)
+                onClick(index, date)
             }
     ) {
         Text(

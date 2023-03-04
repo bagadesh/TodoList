@@ -1,3 +1,4 @@
+
 package com.baga.todolist
 
 import android.os.Bundle
@@ -16,8 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
-        //installSplashScreen()
         setContent {
             window?.statusBarColor = MaterialTheme.colors.onPrimary.toArgb()
             TodoListTheme {
