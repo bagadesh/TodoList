@@ -15,8 +15,6 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.runtime.Composable
@@ -26,13 +24,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bagadesh.baseui.components.DateSelection
+import com.bagadesh.baseui.components.SheetTextField
+import com.bagadesh.baseui.components.SheetTitle
+import com.bagadesh.baseui.theme.TodoListTheme
 import com.bagadesh.tasks.ui.CircleItem
-import com.bagadesh.tasks.ui.DateDisplayView
 
 @Composable
 fun AddTask(
@@ -48,37 +48,17 @@ fun AddTask(
             .wrapContentHeight()
             .background(MaterialTheme.colors.background)
     ) {
-        Text(
+        SheetTitle(
             text = "Create a new task",
-            color = MaterialTheme.colors.onPrimary,
-            fontSize = 20.sp,
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
-            fontWeight = FontWeight.Bold
-        )
-        TextField(
+            )
+        SheetTextField(
             value = taskName,
             onValueChange = {
                 taskName = it
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Color.Transparent)
-                .padding(20.dp),
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.Transparent
-            ),
-        )
-        // Date Sections
-        val list = listOf("Tomorrow", "Today", "Another Date")
-        FlowRow(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
-        ) {
-            list.forEach {
-                DateDisplayView(title = it)
             }
-        }
+        )
+        DateSelection()
         Text(
             text = "Participants",
             color = MaterialTheme.colors.onPrimary,
@@ -123,7 +103,9 @@ fun SaveTask() {
 @Preview
 @Composable
 private fun AddTaskPreview() {
-    AddTask {
+    TodoListTheme {
+        AddTask {
 
+        }
     }
 }
