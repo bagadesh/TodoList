@@ -1,3 +1,5 @@
+import com.baga.todolist.Libs
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -5,10 +7,10 @@ plugins {
 
 android {
     namespace = "com.bagadesh.baseui"
-    compileSdk = 33
+    compileSdk = Libs.Versions.compileSDKVersion
 
     defaultConfig {
-        minSdk = 24
+        minSdk = Libs.Versions.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -20,16 +22,24 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = com.baga.todolist.Libs.Versions.JavaVersion
-        targetCompatibility = com.baga.todolist.Libs.Versions.JavaVersion
+        sourceCompatibility = Libs.Versions.JavaVersion
+        targetCompatibility = Libs.Versions.JavaVersion
     }
     kotlinOptions {
-        jvmTarget = com.baga.todolist.Libs.Versions.jvmTarget
+        jvmTarget = Libs.Versions.jvmTarget
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Libs.Compose.composeCompilerVersion
     }
 }
 
 dependencies {
-    implementation(com.baga.todolist.Libs.Compose.UI)
-    implementation(com.baga.todolist.Libs.Compose.Material)
-    implementation(com.baga.todolist.Libs.Compose.Tooling)
+    implementation(project(mapOf("path" to ":domain")))
+
+    implementation(Libs.Compose.UI)
+    implementation(Libs.Compose.Material)
+    implementation(Libs.Compose.Tooling)
 }
