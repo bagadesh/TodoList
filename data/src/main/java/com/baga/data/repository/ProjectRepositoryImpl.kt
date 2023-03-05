@@ -42,7 +42,7 @@ class ProjectRepositoryImpl @Inject constructor(
     override suspend fun getProjectTypes(request: GetProjectTypesUseCaseRequest): Data<GetProjectTypesResult> {
         return Data.Success(
             data = GetProjectTypesResult(
-                list = appDatabase.projectTypeDao().getAll().map { it.projectType }
+                list = appDatabase.projectTypeDao().getAllProjectTypes().map { it.projectType }
             )
         )
     }

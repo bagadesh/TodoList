@@ -45,6 +45,7 @@ dependencies {
     implementation(Libs.Compose.Material)
     implementation(Libs.Compose.Tooling)
 
+    implementation(Libs.Hilt.Compose)
     implementation(Libs.Hilt.Android)
     kapt(Libs.Hilt.Compiler)
 

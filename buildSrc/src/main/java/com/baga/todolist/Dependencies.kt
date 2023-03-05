@@ -8,7 +8,7 @@ object Libs {
         val JavaVersion = org.gradle.api.JavaVersion.VERSION_17
         val jvmTarget = "17"
         val compileSDKVersion = 33
-        val minSdk = 24
+        val minSdk = 26
     }
 
     object Android {
@@ -101,5 +101,9 @@ object Libs {
             const val Runtime = "com.squareup.sqldelight:runtime:$sql_delight_version" //CommonSet
             const val AndroidDriver = "com.squareup.sqldelight:android-driver:$sql_delight_version" // Android Specific Module
         }
+    }
+
+    object ThirdParty {
+        const val DatePicker = "com.squaredem:composecalendar:1.0.0"
     }
 }

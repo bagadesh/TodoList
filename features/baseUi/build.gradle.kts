@@ -42,4 +42,5 @@ dependencies {
     implementation(Libs.Compose.UI)
     implementation(Libs.Compose.Material)
     implementation(Libs.Compose.Tooling)
+    implementation(Libs.ThirdParty.DatePicker)
 }

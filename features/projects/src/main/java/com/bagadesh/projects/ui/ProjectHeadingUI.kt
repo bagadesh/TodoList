@@ -1,6 +1,7 @@
 package com.bagadesh.projects.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.heightIn
@@ -49,7 +50,10 @@ fun ProjectHeadingUI(
                 modifier = Modifier.padding(0.dp)
             )
         }
-        ProjectHeadingItemBackground(modifier = Modifier.padding(start = 10.dp)) {
+        ProjectHeadingItemBackground(
+            modifier = Modifier.padding(start = 10.dp),
+            onClick = addClick
+        ) {
             Row(
                 modifier = Modifier.padding(10.dp),
                 verticalAlignment = Alignment.CenterVertically
@@ -72,6 +76,7 @@ fun ProjectHeadingUI(
 @Composable
 fun ProjectHeadingItemBackground(
     modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
     content: @Composable () -> Unit
 ) {
     Box(
@@ -80,7 +85,11 @@ fun ProjectHeadingItemBackground(
             .wrapContentWidth()
             .widthIn(min = 30.dp)
             .heightIn(min = 30.dp)
-            .background(color = MaterialTheme.colors.surface),
+            .background(color = MaterialTheme.colors.surface)
+            .clickable(enabled = onClick != null, onClick = {
+                onClick?.invoke()
+            })
+        ,
         contentAlignment = Alignment.Center
     ) {
         content()

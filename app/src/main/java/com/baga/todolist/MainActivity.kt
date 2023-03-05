@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.baga.todolist.home.Home
-import com.baga.todolist.ui.theme.TodoListTheme
+import com.bagadesh.baseui.theme.TodoListTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

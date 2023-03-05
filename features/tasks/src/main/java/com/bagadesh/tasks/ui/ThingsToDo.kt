@@ -15,7 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.baga.domain.entity.thingsTodo.Todo
-import com.bagadesh.baseui.components.DateDisplayView
+import com.bagadesh.baseui.components.date.DateDisplayView
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -80,7 +80,9 @@ fun ThinkView(
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
             )
-            DateDisplayView(todo.whenHappening)
+            DateDisplayView(todo.whenHappening, selected = false) {
+
+            }
         }
     }
 }

@@ -12,8 +12,8 @@ import com.baga.data.db.entity.ProjectType
 @Dao
 interface ProjectTypeDao {
 
-    @Query("Select * from projecttype")
-    suspend fun getAll(): List<ProjectType>
+    @Query("SELECT * from project_type")
+    suspend fun getAllProjectTypes(): List<ProjectType>
 
     @Insert
     suspend fun insertAll(vararg projectType: ProjectType)

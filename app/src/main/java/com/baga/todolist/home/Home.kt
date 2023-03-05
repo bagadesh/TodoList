@@ -19,11 +19,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.baga.todolist.home.BottomSheetType.*
 import com.baga.todolist.home.dateRow.DateRowUI
 import com.baga.todolist.home.viewModel.HomeViewModel
 import com.bagadesh.baseui.MaterialColorUI
 import com.bagadesh.baseui.uiState.UIStatePark
 import com.bagadesh.projects.ui.ProjectHomeUI
+import com.bagadesh.projects.ui.addProject.AddProjectUI
 import com.bagadesh.projects.viewModel.ProjectViewModel
 import com.bagadesh.tasks.AddTask
 import com.bagadesh.tasks.AddTaskButton
@@ -78,32 +80,45 @@ fun HomeView(
 @Composable
 fun Home() {
     val scope = rememberCoroutineScope()
-    val addTaskState = rememberModalBottomSheetState(
-        initialValue = ModalBottomSheetValue.Hidden
-    )
+    val addTaskState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
     val homeVm = hiltViewModel<HomeViewModel>()
     ModalBottomSheetLayout(
         sheetState = addTaskState,
         sheetShape = RoundedCornerShape(5.dp),
         sheetBackgroundColor = Color.Transparent,
         sheetContent = {
-            Box(
-                modifier = Modifier
-                    .padding(10.dp),
-            ) {
-                AddTask {
-                    scope.launch {
-                        addTaskState.hide()
+
+            when (homeVm.bottomSheetType.value) {
+                ADD_TASK -> {
+                    Box(
+                        modifier = Modifier
+                            .padding(10.dp),
+                    ) {
+                        AddTask {
+                            scope.launch {
+                                addTaskState.hide()
+                            }
+                        }
                     }
+                }
+
+                ADD_PROJECT -> {
+                    AddProjectUI()
                 }
             }
         }) {
         HomeView(
             addTaskClick = {
-
+                homeVm.bottomSheetType.value = ADD_TASK
+                scope.launch {
+                    addTaskState.show()
+                }
             },
             addProjectClick = {
-
+                homeVm.bottomSheetType.value = ADD_PROJECT
+                scope.launch {
+                    addTaskState.show()
+                }
             }
         )
     }
