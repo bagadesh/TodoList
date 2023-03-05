@@ -7,9 +7,11 @@ import com.baga.data.mapper.toProjectDomain
 import com.baga.domain.repository.ProjectRepository
 import com.baga.domain.result.Data
 import com.baga.domain.result.project.GetAllProjectResult
+import com.baga.domain.result.project.GetProjectTypesResult
 import com.baga.domain.result.project.ProjectAddResult
 import com.baga.domain.usecase.project.AddProjectUseCaseRequest
 import com.baga.domain.usecase.project.GetAllProjectUseCaseRequest
+import com.baga.domain.usecase.project.GetProjectTypesUseCaseRequest
 import javax.inject.Inject
 
 /**
@@ -33,6 +35,14 @@ class ProjectRepositoryImpl @Inject constructor(
         return Data.Success(
             GetAllProjectResult(
                 result = appDatabase.projectDao().getAll().map { it.toProjectDomain() }
+            )
+        )
+    }
+
+    override suspend fun getProjectTypes(request: GetProjectTypesUseCaseRequest): Data<GetProjectTypesResult> {
+        return Data.Success(
+            data = GetProjectTypesResult(
+                list = appDatabase.projectTypeDao().getAll().map { it.projectType }
             )
         )
     }
