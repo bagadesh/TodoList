@@ -36,13 +36,15 @@ import java.util.Date
  * Created by bagadesh on 04/03/23.
  */
 
+const val DefaultDate = "Today"
+
 @Composable
 fun DateSelection(
     modifier: Modifier = Modifier,
     update: (String) -> Unit
 ) {
-    var dueDate by remember { mutableStateOf("") }
-    var selectedDate by remember { mutableStateOf("") }
+    var dueDate by remember { mutableStateOf(todayInMills()) }
+    var selectedDate by remember { mutableStateOf(DefaultDate) }
     val showDialog = rememberSaveable { mutableStateOf(false) }
     val list = remember { listOf("Today", "Tomorrow", "Another Date") }
     val startDate by remember {
@@ -139,6 +141,15 @@ fun DateSelection(
             }
         )
     }
+}
+
+private fun todayInMills(): String {
+    val calendar = Calendar.getInstance().apply {
+        set(Calendar.HOUR_OF_DAY, 0);
+        set(Calendar.MINUTE, 0);
+        set(Calendar.SECOND, 0);
+    }
+    return calendar.timeInMillis.toString()
 }
 
 fun String.toDateString(): String {
