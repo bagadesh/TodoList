@@ -1,4 +1,4 @@
-package com.baga.todolist.ui.theme
+package com.bagadesh.baseui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
