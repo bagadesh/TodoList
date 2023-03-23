@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalLayoutApi::class)
+@file:OptIn(ExperimentalLayoutApi::class, ExperimentalMaterialApi::class)
 
 package com.bagadesh.projects.ui.projectType
 
@@ -8,13 +8,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,8 +25,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bagadesh.baseui.components.SheetTextField
-import com.bagadesh.baseui.theme.TodoListTheme
+import com.baga.domain.debug.printInLogger
+import com.bagadesh.baseui.theme.TodoListPreviewBackground
 
 /**
  * Created by bagadesh on 04/03/23.
@@ -36,17 +37,24 @@ fun ProjectTypesUI(
     modifier: Modifier = Modifier,
     list: List<String>,
     selectedText: String,
-    onClick: (String) -> Unit
+    onClick: (String) -> Unit,
+    doneAction: (String) -> Unit,
+    showOtherClick: () -> Unit,
 ) {
-    var sheetTextField by remember { mutableStateOf("") }
-    val modifiedList = remember { if (list.size > 6) list.subList(0, 6) else list }
+    LaunchedEffect(key1 = Unit, block = {
+        printInLogger("ProjectTypesUI -> count = ${list.size}")
+    })
+    var showAddDialog by remember { mutableStateOf(false) }
+    val modifiedList = remember(list) { if (list.size > 6) list.subList(0, 6) else list }
+    val isSelectedTextPresentInModifiedList = remember(selectedText, modifiedList) {
+        if (selectedText.isEmpty()) {
+            return@remember true
+        } else {
+            return@remember modifiedList.contains(selectedText)
+        }
+    }
+
     Column(modifier = modifier then Modifier.fillMaxWidth()) {
-        SheetTextField(
-            value = sheetTextField, onValueChange = { sheetTextField = it },
-            placeholder = {
-                Text(text = "Search")
-            }
-        )
         FlowRow(
             modifier = Modifier
                 .fillMaxWidth()
@@ -55,31 +63,56 @@ fun ProjectTypesUI(
                 ProjectItemType(
                     modifier = Modifier.padding(10.dp),
                     text = it,
-                    selected = remember { selectedText == it }
+                    selected = remember(selectedText) { selectedText == it }
                 ) {
                     onClick(it)
                 }
             }
-        }
-        Row {
-            ProjectItemType(
-                modifier = Modifier.padding(10.dp),
-                text = "Add",
-                selected = false
-            ) {
-
-            }
-            if (list.size > 6) {
+            if (!isSelectedTextPresentInModifiedList) {
                 ProjectItemType(
                     modifier = Modifier.padding(10.dp),
-                    text = "Others",
-                    selected = false
+                    text = selectedText,
+                    selected = true
                 ) {
-
+                    onClick(selectedText)
                 }
             }
+            if (list.size > 6) {
+                ClipRoundBackground(
+                    modifier = Modifier.padding(10.dp),
+                    onClick = {
+                        showOtherClick()
+                    },
+                    text = "Others",
+                    textColor = MaterialTheme.colors.onSurface,
+                    backgroundColor = MaterialTheme.colors.primary.copy(alpha = .3f)
+                )
+            }
+
+            ClipRoundBackground(
+                modifier = Modifier.padding(10.dp),
+                onClick = {
+                    showAddDialog = true
+                },
+                text = "Add",
+                textColor = MaterialTheme.colors.surface,
+                backgroundColor = MaterialTheme.colors.primary.copy(alpha = .6f)
+            )
         }
     }
+
+    AddProjectTypeDialog(
+        modifier = Modifier,
+        showDialog = { showAddDialog },
+        hideDialog = {
+            showAddDialog = false
+        },
+        addProjectType = {
+            doneAction(it)
+            showAddDialog = false
+        }
+    )
+
 }
 
 @Composable
@@ -102,12 +135,29 @@ fun ProjectItemType(
             backgroundColor = MaterialTheme.colors.surface
         }
     }
+    ClipRoundBackground(
+        modifier = modifier,
+        onClick = onClick,
+        text = text,
+        textColor = textColor,
+        backgroundColor = backgroundColor
+    )
+}
+
+@Composable
+fun ClipRoundBackground(
+    textColor: Color = MaterialTheme.colors.onSurface,
+    backgroundColor: Color = MaterialTheme.colors.surface,
+    modifier: Modifier = Modifier,
+    text: String,
+    onClick: () -> Unit
+) {
     Box(
         modifier = modifier then Modifier
             .clip(RoundedCornerShape(10.dp))
             .background(color = backgroundColor)
-            .padding(10.dp)
             .clickable { onClick() }
+            .padding(10.dp)
     ) {
         Text(text = text, color = textColor)
     }
@@ -116,7 +166,7 @@ fun ProjectItemType(
 @Preview
 @Composable
 fun ProjectItemTypePreview() {
-    TodoListTheme {
+    TodoListPreviewBackground {
         ProjectItemType(text = "Sample", selected = false) {
 
         }
@@ -126,7 +176,7 @@ fun ProjectItemTypePreview() {
 @Preview
 @Composable
 fun ProjectItemTypeSelectedPreview() {
-    TodoListTheme {
+    TodoListPreviewBackground {
         ProjectItemType(text = "Sample", selected = true) {
 
         }
@@ -136,19 +186,21 @@ fun ProjectItemTypeSelectedPreview() {
 @Preview
 @Composable
 fun ProjectTypesUIPreview() {
-    TodoListTheme {
-        Column(modifier = Modifier.background(MaterialTheme.colors.background)) {
-            ProjectTypesUI(
-                list = mutableListOf<String>().apply {
-                    repeat(10) {
-                        add("Sample $it")
-                    }
-                },
-                selectedText = "Sample 2",
-                onClick = {
-
+    TodoListPreviewBackground {
+        ProjectTypesUI(
+            list = mutableListOf<String>().apply {
+                repeat(10) {
+                    add("Sample $it")
                 }
-            )
-        }
+            },
+            selectedText = "Sample 2",
+            onClick = {
+
+            },
+            doneAction = {
+
+            },
+            showOtherClick = {}
+        )
     }
 }

@@ -25,9 +25,16 @@ fun ProjectItemUI(
     projectType: String,
     dueDate: String,
     upcomingCount: Int,
-    iconResource: Int
+    iconResource: Int,
+    onClick: () -> Unit,
+    onLongClick: () -> Unit,
+    selected: Boolean
 ) {
-    ProjectSurfaceUI {
+    ProjectSurfaceUI(
+        onClick = onClick,
+        onLongClick = onLongClick,
+        selected = selected
+    ) {
         Image(
             painter = painterResource(id = iconResource),
             contentDescription = "",
@@ -65,6 +72,9 @@ fun ProjectItemUIPreview() {
         projectType = "Birthday",
         dueDate = "2130712837891",
         upcomingCount = 19,
-        iconResource = R.drawable.ic_ring
+        iconResource = R.drawable.ic_ring,
+        onClick = {},
+        onLongClick = {},
+        selected = true
     )
 }

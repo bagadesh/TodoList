@@ -23,3 +23,5 @@ val selectedTopBarColorDark = Color(0xFF1410d1)
  */
 
 val projectBackgroundColor = Color(0xFFf6fafb)
+val projectItemSelectColor = Color(0xFFc6d8cd)
+val projectBottomBarColor = Color(0xFFffffff)

@@ -14,7 +14,8 @@ private val DarkColorPalette = darkColors(
     surface = Color.Black,
     onSurface = Color.White,
     onPrimary = selectedTopBarColorDark,
-    secondaryVariant = Color(0x88F8FAFB)
+    secondaryVariant = Color(0x88F8FAFB),
+    background = Color.Black
 )
 
 private val LightColorPalette = lightColors(
@@ -25,6 +26,7 @@ private val LightColorPalette = lightColors(
     onSurface = Color.Black,
     onPrimary = selectedTopBarColorLight,
     secondaryVariant = Color(0xFF000000),
+    background = Color.White
 
     /* Other default colors to override
     background = Color.White,

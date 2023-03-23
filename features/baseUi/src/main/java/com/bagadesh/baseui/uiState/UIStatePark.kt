@@ -46,3 +46,37 @@ fun <T> UIStatePark(
         }
     }
 }
+
+@Composable
+fun <T> UIStatePark(
+    modifier: Modifier = Modifier,
+    state: () -> UIState<T>,
+    loading: @Composable (() -> Unit)? = null,
+    failure: @Composable ((Throwable) -> Unit)? = null,
+    success: @Composable ColumnScope.(T) -> Unit,
+) {
+    Column(modifier = modifier then Modifier) {
+        when (val stateResult = state()) {
+            is UIState.Loading -> {
+                loading?.invoke()
+            }
+            is UIState.Failure -> {
+                Log.d( "UIStatePark","UIStatePark ${stateResult.throwable.message}", stateResult.throwable)
+                if (failure != null) {
+                    failure.invoke(stateResult.throwable)
+                } else {
+                    Text(text = "Something went wrong")
+//                    if (BuildConfig.DEBUG) {
+                    Text(
+                        text = "Error: ${stateResult.throwable.stackTraceToString()}",
+                        fontSize = 12.sp
+                    )
+//                    }
+                }
+            }
+            is UIState.Success -> {
+                success(stateResult.data)
+            }
+        }
+    }
+}

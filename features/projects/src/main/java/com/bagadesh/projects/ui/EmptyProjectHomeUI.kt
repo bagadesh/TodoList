@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun EmptyProjectHomeUI(
     modifier: Modifier = Modifier
 ) {
-    ProjectSurfaceUI(modifier = modifier) {
+    ProjectSurfaceUI(modifier = modifier, onClick = {}, onLongClick = {}, selected = false) {
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center

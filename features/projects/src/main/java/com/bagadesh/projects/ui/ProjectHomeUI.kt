@@ -19,9 +19,12 @@ import com.bagadesh.projects.R
 @Composable
 fun ProjectHomeUI(
     projectList: List<ProjectDomain>,
-    addProjectClick: () -> Unit
+    selectedProjectItems: () -> List<Int>,
+    addProjectClick: () -> Unit,
+    onClick: (Int) -> Unit,
+    onLongClick: (Int) -> Unit,
 ) {
-    val sizeOfProjectList = remember { projectList.size }
+    val sizeOfProjectList = remember(projectList) { projectList.size }
     Column(
         modifier = Modifier
             .padding(start = 10.dp, top = 30.dp)
@@ -43,7 +46,7 @@ fun ProjectHomeUI(
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+                horizontalArrangement = Arrangement.Start
             ) {
                 items(projectList) {
                     ProjectItemUI(
@@ -51,7 +54,14 @@ fun ProjectHomeUI(
                         projectType = it.projectType,
                         dueDate = it.dueDate,
                         iconResource = R.drawable.ic_ring, //TODO
-                        upcomingCount = 19 //TODO
+                        upcomingCount = 19, //TODO
+                        onClick = {
+                            onClick(it.id)
+                        },
+                        onLongClick = {
+                            onLongClick(it.id)
+                        },
+                        selected = selectedProjectItems().contains(it.id)
                     )
                 }
             }
@@ -84,24 +94,24 @@ fun ProjectHomeUIPreview() {
             )
         )
     }
-    ProjectHomeUI(
-        result.map {
-            ProjectDomain(
-                id = 1,
-                title = "Sample title",
-                dueDate = "1237198238923",
-                projectType = it.title
-            )
-        }
-    ) {
-
-    }
+//    ProjectHomeUI(
+//        result.map {
+//            ProjectDomain(
+//                id = 1,
+//                title = "Sample title",
+//                dueDate = "1237198238923",
+//                projectType = it.title
+//            )
+//        }
+//    ) {
+//
+//    }
 }
 
 @Preview
 @Composable
 fun EmptyProjectHomeUIPreview() {
-    ProjectHomeUI(emptyList()) {
-
-    }
+//    ProjectHomeUI(emptyList()) {
+//
+//    }
 }

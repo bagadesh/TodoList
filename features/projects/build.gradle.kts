@@ -50,4 +50,5 @@ dependencies {
     kapt(Libs.Hilt.Compiler)
 
     implementation(Libs.LifeCycle.ViewModel)
+    implementation(Libs.ThirdParty.FuzzySearch)
 }

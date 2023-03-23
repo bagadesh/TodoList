@@ -2,6 +2,7 @@ package com.baga.data.repository
 
 import com.baga.data.db.AppDatabase
 import com.baga.data.db.entity.ProjectData
+import com.baga.data.db.entity.ProjectType
 import com.baga.data.mapper.toProjectData
 import com.baga.data.mapper.toProjectDomain
 import com.baga.domain.repository.ProjectRepository
@@ -9,7 +10,9 @@ import com.baga.domain.result.Data
 import com.baga.domain.result.project.GetAllProjectResult
 import com.baga.domain.result.project.GetProjectTypesResult
 import com.baga.domain.result.project.ProjectAddResult
+import com.baga.domain.usecase.project.AddProjectTypeUseCaseRequest
 import com.baga.domain.usecase.project.AddProjectUseCaseRequest
+import com.baga.domain.usecase.project.DeleteProjectUseCaseRequest
 import com.baga.domain.usecase.project.GetAllProjectUseCaseRequest
 import com.baga.domain.usecase.project.GetProjectTypesUseCaseRequest
 import javax.inject.Inject
@@ -31,6 +34,11 @@ class ProjectRepositoryImpl @Inject constructor(
         return Data.Success(ProjectAddResult(Unit)) //TODO
     }
 
+    override suspend fun deleteProject(request: DeleteProjectUseCaseRequest): Data<Unit> {
+        appDatabase.projectDao().deleteProjectById(request.projectIds)
+        return Data.Success(Unit)
+    }
+
     override suspend fun getAllProjects(request: GetAllProjectUseCaseRequest): Data<GetAllProjectResult> {
         return Data.Success(
             GetAllProjectResult(
@@ -44,6 +52,12 @@ class ProjectRepositoryImpl @Inject constructor(
             data = GetProjectTypesResult(
                 list = appDatabase.projectTypeDao().getAllProjectTypes().map { it.projectType }
             )
+        )
+    }
+
+    override suspend fun addProjectType(request: AddProjectTypeUseCaseRequest): Data<Unit> {
+        return Data.Success(
+            data = appDatabase.projectTypeDao().insertAll(ProjectType(projectType = request.projectType))
         )
     }
 }

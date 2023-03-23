@@ -20,4 +20,8 @@ interface ProjectDao {
 
     @Delete
     fun delete(projectData: ProjectData)
+
+    @Query("delete from projectdata where id in (:projectIds)")
+    fun deleteProjectById(projectIds: List<Int>)
+
 }
