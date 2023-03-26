@@ -28,6 +28,7 @@ object Libs {
         const val Tooling = "androidx.compose.ui:ui-tooling:$compose_version"
         const val Activity = "androidx.activity:activity-compose:$activity_compose"
         const val UnitTest = "androidx.compose.ui:ui-test-junit4:$compose_version"
+        const val Navigation = "androidx.navigation:navigation-compose:2.5.1"
     }
 
     object Room {

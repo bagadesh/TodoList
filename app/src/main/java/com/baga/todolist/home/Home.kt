@@ -6,15 +6,16 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
@@ -26,6 +27,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.baga.todolist.home.BottomSheetType.*
+import com.baga.todolist.home.dateRow.DateTopBackground
 import com.baga.todolist.home.dateRow.DateRowUI
 import com.baga.todolist.home.viewModel.HomeViewModel
 import com.bagadesh.baseui.MaterialColorUI
@@ -43,7 +45,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeView(
     addTaskClick: () -> Unit,
-    addProjectClick: () -> Unit
+    addProjectClick: () -> Unit,
+    settingsClick: () -> Unit,
 ) {
     val viewModel: HomeViewModel = viewModel()
     val projectVm = hiltViewModel<ProjectViewModel>()
@@ -59,7 +62,18 @@ fun HomeView(
             modifier = Modifier.padding(10.dp)
         ) {
             MaterialColorUI()
-            DateRowUI(dRows)
+
+            Row {
+                DateTopBackground(
+                    onClick = settingsClick
+                ) {
+                    Icon(imageVector = Icons.Default.Settings, contentDescription = "Settings")
+                }
+                DateRowUI(dRows)
+            }
+
+
+
 
             UIStatePark(state = { projects }) {
                 ProjectHomeUI(
@@ -145,11 +159,13 @@ fun HomeBottomBarUI(
 @OptIn(ExperimentalMaterialApi::class)
 @Preview
 @Composable
-fun Home() {
+fun Home(
+    settingsClick: () -> Unit,
+) {
     val scope = rememberCoroutineScope()
     val bottomState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden, skipHalfExpanded = true)
-    val homeVm = hiltViewModel<HomeViewModel>()
     val projectVm = hiltViewModel<ProjectViewModel>()
+    val homeVm = hiltViewModel<HomeViewModel>()
     ModalBottomSheetLayout(
         sheetState = bottomState,
         sheetShape = RoundedCornerShape(5.dp),
@@ -194,7 +210,8 @@ fun Home() {
                 scope.launch {
                     bottomState.show()
                 }
-            }
+            },
+            settingsClick = settingsClick
         )
     }
 }

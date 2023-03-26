@@ -8,10 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
-    primary = Color(0xFF1410d1),
+    primary = Color(0xFFd0cff5),
     primaryVariant = Purple700,
     secondary = Teal200,
-    surface = Color.Black,
+    surface = CardBackgroundDark,
     onSurface = Color.White,
     onPrimary = selectedTopBarColorDark,
     secondaryVariant = Color(0x88F8FAFB),

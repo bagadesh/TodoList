@@ -81,6 +81,7 @@ dependencies {
     implementation(Libs.Compose.Material)
     implementation(Libs.Compose.Tooling)
     implementation(Libs.Compose.Activity)
+    implementation(Libs.Compose.Navigation)
 
     implementation(Libs.Paging.Compose)
     implementation(Libs.Paging.Runtime)

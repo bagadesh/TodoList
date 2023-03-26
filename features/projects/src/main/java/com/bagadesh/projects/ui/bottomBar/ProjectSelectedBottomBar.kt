@@ -20,6 +20,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,72 +39,75 @@ fun ProjectSelectedBottomBar(
     selectAllClick: () -> Unit,
     closeClick: () -> Unit,
 ) {
+    val colorGray = Color.Gray
+    // Gradient brush
+    val gradientGrayWhite = Brush.verticalGradient(
+        0f to colorGray,
+        1000f to MaterialTheme.colors.onBackground
+    )
 
     val modifier = modifier then Modifier
+        .clip(RoundedCornerShape(10.dp))
         .padding(10.dp)
         .fillMaxWidth()
         .height(100.dp)
+        .background(brush = gradientGrayWhite, shape = RoundedCornerShape(10.dp))
 
-    Card(
-        backgroundColor = MaterialTheme.colors.onBackground,
-        modifier = modifier
+    Row(
+        modifier = modifier ,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Row(
-            modifier = Modifier,
-            verticalAlignment = Alignment.CenterVertically,
+        IconButton(
+            onClick = {
+                closeClick()
+            },
+            modifier = Modifier
+                .padding(10.dp)
+                .clip(RoundedCornerShape(50))
+                .wrapContentSize()
+                .padding(10.dp)
+                .background(color = MaterialTheme.colors.background, RoundedCornerShape(50))
         ) {
-            IconButton(
-                onClick = {
-                    closeClick()
-                },
-                modifier = Modifier
-                    .padding(10.dp)
-                    .clip(RoundedCornerShape(50))
-                    .wrapContentSize()
-                    .padding(10.dp)
-                    .background(color = MaterialTheme.colors.background, RoundedCornerShape(50))
-            ) {
-                Icon(
-                    modifier = Modifier.padding(10.dp),
-                    imageVector = Icons.Filled.Close, contentDescription = "Close"
-                )
-            }
-            
-            IconButton(
-                onClick = {
-                    deleteClick()
-                },
-                modifier = Modifier
-                    .padding(10.dp)
-                    .clip(RoundedCornerShape(50))
-                    .wrapContentSize()
-                    .padding(10.dp)
-                    .background(color = MaterialTheme.colors.background, RoundedCornerShape(50))
-            ) {
-                Icon(
-                    modifier = Modifier.padding(10.dp),
-                    imageVector = Icons.Filled.Delete, contentDescription = "Delete"
-                )
-            }
-
-            IconButton(
-                onClick = {
-                    selectAllClick()
-                },
-                modifier = Modifier
-                    .padding(10.dp)
-                    .clip(RoundedCornerShape(50))
-                    .wrapContentSize()
-                    .padding(10.dp)
-                    .background(color = MaterialTheme.colors.background, RoundedCornerShape(50))
-            ) {
-                Icon(
-                    modifier = Modifier.padding(10.dp),
-                    painter = painterResource(id = R.drawable.ic_select_all), contentDescription = "Select All"
-                )
-            }
-
+            Icon(
+                modifier = Modifier.padding(10.dp),
+                imageVector = Icons.Filled.Close, contentDescription = "Close"
+            )
         }
+
+        IconButton(
+            onClick = {
+                deleteClick()
+            },
+            modifier = Modifier
+                .padding(10.dp)
+                .clip(RoundedCornerShape(50))
+                .wrapContentSize()
+                .padding(10.dp)
+                .background(color = MaterialTheme.colors.background, RoundedCornerShape(50))
+        ) {
+            Icon(
+                modifier = Modifier.padding(10.dp),
+                imageVector = Icons.Filled.Delete, contentDescription = "Delete"
+            )
+        }
+
+        IconButton(
+            onClick = {
+                selectAllClick()
+            },
+            modifier = Modifier
+                .padding(10.dp)
+                .clip(RoundedCornerShape(50))
+                .wrapContentSize()
+                .padding(10.dp)
+                .background(color = MaterialTheme.colors.background, RoundedCornerShape(50))
+        ) {
+            Icon(
+                modifier = Modifier.padding(10.dp),
+                painter = painterResource(id = R.drawable.ic_select_all), contentDescription = "Select All"
+            )
+        }
+
     }
 
 }
